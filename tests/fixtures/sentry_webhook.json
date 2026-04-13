@@ -1,0 +1,62 @@
+{
+  "action": "triggered",
+  "data": {
+    "event": {
+      "event_id": "evt_abc123def456",
+      "title": "ZeroDivisionError: division by zero",
+      "release": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+      "exception": {
+        "values": [
+          {
+            "type": "ZeroDivisionError",
+            "value": "division by zero",
+            "stacktrace": {
+              "frames": [
+                {
+                  "filename": "uvicorn/main.py",
+                  "function": "run",
+                  "lineno": 42,
+                  "colno": 12,
+                  "abs_path": "/usr/local/lib/python3.11/site-packages/uvicorn/main.py",
+                  "module": "uvicorn.main",
+                  "in_app": false,
+                  "context_line": "    server.run()"
+                },
+                {
+                  "filename": "/usr/src/app/src/calculator.py",
+                  "function": "divide",
+                  "lineno": 15,
+                  "colno": 8,
+                  "abs_path": "/usr/src/app/src/calculator.py",
+                  "module": "src.calculator",
+                  "in_app": true,
+                  "context_line": "    return a / b"
+                },
+                {
+                  "filename": "/usr/src/app/src/api/routes.py",
+                  "function": "handle_calculation",
+                  "lineno": 87,
+                  "colno": 16,
+                  "abs_path": "/usr/src/app/src/api/routes.py",
+                  "module": "src.api.routes",
+                  "in_app": true,
+                  "context_line": "    result = calculator.divide(a, b)"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "web_url": "https://sentry.io/organizations/acme/issues/12345/events/evt_abc123def456/"
+    },
+    "triggered_rule": "Production Alert Rule"
+  },
+  "installation": {
+    "uuid": "install-uuid-123"
+  },
+  "actor": {
+    "type": "application",
+    "id": "sentry",
+    "name": "Sentry"
+  }
+}

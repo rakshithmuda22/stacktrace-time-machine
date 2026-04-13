@@ -1,0 +1,39 @@
+{
+  "data": {
+    "repository": {
+      "object": {
+        "associatedPullRequests": {
+          "nodes": [
+            {
+              "number": 142,
+              "title": "fix: handle zero division edge case in Calculator",
+              "url": "https://github.com/acme/backend-api/pull/142",
+              "body": "## Summary\n\nThis PR adds a guard clause to `Calculator.divide()` to raise a proper `ZeroDivisionError` instead of letting Python's default error propagate. This gives us better error messages in production logs.\n\n## Changes\n- Added zero check in `divide()` method\n- Added unit tests for the edge case",
+              "author": {
+                "login": "janedoe",
+                "avatarUrl": "https://avatars.githubusercontent.com/u/12345"
+              },
+              "mergedAt": "2024-12-15T11:00:00Z",
+              "reviews": {
+                "nodes": [
+                  {
+                    "body": "Looks good! Consider also handling `None` inputs.",
+                    "author": {
+                      "login": "reviewer1"
+                    }
+                  },
+                  {
+                    "body": "LGTM. Nice catch on the edge case.",
+                    "author": {
+                      "login": "reviewer2"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

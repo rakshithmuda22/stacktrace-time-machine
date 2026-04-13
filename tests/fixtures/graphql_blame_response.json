@@ -1,0 +1,40 @@
+{
+  "data": {
+    "repository": {
+      "ref": {
+        "target": {
+          "blame": {
+            "ranges": [
+              {
+                "startingLine": 27,
+                "endingLine": 30,
+                "commit": {
+                  "oid": "f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3",
+                  "message": "fix: handle zero division edge case in Calculator",
+                  "author": {
+                    "name": "Jane Doe",
+                    "email": "jane@acme.com",
+                    "date": "2024-12-15T10:30:00Z"
+                  }
+                }
+              },
+              {
+                "startingLine": 25,
+                "endingLine": 26,
+                "commit": {
+                  "oid": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0",
+                  "message": "feat: add Calculator class with basic operations",
+                  "author": {
+                    "name": "John Smith",
+                    "email": "john@acme.com",
+                    "date": "2024-12-10T14:00:00Z"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
