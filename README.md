@@ -1,6 +1,24 @@
 # Stacktrace-to-PR Time Machine
 
-A webhook-driven service that ingests Sentry stack traces and automatically traces them back through Git history via the GitHub GraphQL API to the exact Pull Request that introduced the faulty code, posting enriched incident context to Slack within seconds of an alert firing.
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-blue.svg)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.109-009688.svg)](https://fastapi.tiangolo.com)
+[![Redis](https://img.shields.io/badge/Redis-7-red.svg)](https://redis.io)
+[![Tests](https://img.shields.io/badge/Tests-64_passing-brightgreen.svg)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> Webhook-driven service that traces Sentry stack frames to the exact Pull Request that introduced the bug via GitHub GraphQL blame API — posts enriched incident context to Slack in seconds.
+
+## Why I Built This
+
+On-call engineers waste **15-30 minutes per incident** doing the same manual trace: open Sentry → find the error line → `git blame` → find the commit → find the PR → copy context into Slack. This tool does all of that in **under 3 seconds**, automatically, the moment Sentry fires.
+
+## Technical Highlights
+
+- **Fully stateless** — zero local git clones. All blame, file content, and PR data via GitHub GraphQL API
+- **AST-aware blame** — Python files get `ast.parse()` to find full function boundaries, then blame the entire range (not just the error line)
+- **SHA-aware caching** — immutable SHA queries cached 30 days (commits never change), mutable branch queries use short TTLs
+- **HMAC-SHA256 verification** with constant-time `compare_digest()` preventing forged payloads AND timing attacks
+- **Graceful degradation** — partial failures still produce useful Slack messages
 
 ## Architecture
 
