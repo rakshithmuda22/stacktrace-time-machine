@@ -28,7 +28,6 @@ from src.exceptions import (
     GitHubAPIError,
     PayloadParseError,
     SlackNotifyError,
-    TimeMachineError,
 )
 from src.github_client import GitHubGraphQLClient
 from src.schemas import FunctionLocation, IncidentReport
