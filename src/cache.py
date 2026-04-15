@@ -7,7 +7,6 @@ ref is a mutable branch name, short TTLs are used instead.
 
 from __future__ import annotations
 
-import json
 import logging
 from typing import Optional
 
