@@ -65,6 +65,7 @@ flowchart LR
 
 1. Clone and configure:
    ```bash
+   git clone https://github.com/rakshithmuda22/stacktrace-time-machine.git
    cd stacktrace-time-machine
    cp .env.example .env
    # Edit .env with your tokens and settings

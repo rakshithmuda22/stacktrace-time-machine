@@ -12,8 +12,6 @@ import hmac
 
 from fastapi import HTTPException, Request
 
-from src.exceptions import WebhookAuthError
-
 
 async def verify_sentry_signature(
     request: Request,
