@@ -73,6 +73,8 @@ flowchart LR
 2. Start the service:
    ```bash
    docker compose up -d
+   # Docker Compose v1:
+   # docker-compose up -d
    ```
 
 3. Verify it's running:
