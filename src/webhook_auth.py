@@ -35,7 +35,16 @@ async def verify_sentry_signature(
     secret: str = request.app.state.settings.sentry_client_secret
 
     if not secret:
-        return body
+        # Fail closed: refuse to accept unauthenticated webhooks in
+        # production. Misconfigured SENTRY_CLIENT_SECRET should be
+        # loud, not silent.
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "SENTRY_CLIENT_SECRET is not configured. Refusing to "
+                "accept unauthenticated webhooks."
+            ),
+        )
 
     signature = request.headers.get("sentry-hook-signature")
     if not signature:
