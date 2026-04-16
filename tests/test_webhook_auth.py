@@ -91,11 +91,12 @@ async def test_wrong_signature_fails() -> None:
 
 
 @pytest.mark.asyncio
-async def test_empty_secret_skips_verification() -> None:
-    """When SENTRY_CLIENT_SECRET is empty, skip verification."""
+async def test_empty_secret_fails_closed() -> None:
+    """When SENTRY_CLIENT_SECRET is empty, refuse the request with 503."""
     body = b'{"event": "test"}'
     request = _make_request(body, signature=None, secret="")
 
-    result = await verify_sentry_signature(request)
+    with pytest.raises(Exception) as exc_info:
+        await verify_sentry_signature(request)
 
-    assert result == body
+    assert exc_info.value.status_code == 503
