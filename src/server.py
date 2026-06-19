@@ -30,6 +30,7 @@ from src.exceptions import (
     SlackNotifyError,
 )
 from src.github_client import GitHubGraphQLClient
+from src.logging_config import setup_logging
 from src.schemas import FunctionLocation, IncidentReport
 from src.slack_notifier import send_incident_report
 from src.webhook_auth import verify_sentry_signature
@@ -48,6 +49,7 @@ def _looks_like_sha(ref: str) -> bool:
 async def lifespan(app: FastAPI):
     """Initialize shared clients on startup, close on shutdown."""
     settings = load_settings()
+    setup_logging(settings.log_level)
     app.state.settings = settings
     app.state.cache = CacheClient(settings.redis_url)
     app.state.github = GitHubGraphQLClient(settings.github_token)

@@ -29,7 +29,8 @@ async def verify_sentry_signature(
         The raw request body bytes (for downstream parsing).
 
     Raises:
-        HTTPException: 401 if the signature is missing or invalid.
+        HTTPException: 503 if SENTRY_CLIENT_SECRET is not configured;
+            401 if the signature is missing or invalid.
     """
     body = await request.body()
     secret: str = request.app.state.settings.sentry_client_secret

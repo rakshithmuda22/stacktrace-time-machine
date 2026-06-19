@@ -102,8 +102,9 @@ Receives Sentry issue alert webhooks and runs the full blame → PR → Slack pi
 
 **Responses:**
 - `200 OK` — Processed (even with partial failures)
-- `401 Unauthorized` — Invalid signature
+- `401 Unauthorized` — Missing or invalid signature
 - `422 Unprocessable Entity` — Malformed payload
+- `503 Service Unavailable` — `SENTRY_CLIENT_SECRET` not configured
 
 ### GET /health
 
